@@ -2,17 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Quest : MonoBehaviour
+namespace QuestJournal
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+	public class Quest
+	{
+		private QuestState[] states;
+		private int state;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+		private int reward;
+
+		public Quest()
+		{
+			
+		}
+
+	}
 }

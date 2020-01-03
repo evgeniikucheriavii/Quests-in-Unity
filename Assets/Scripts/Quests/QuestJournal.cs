@@ -1,18 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class QuestJournal : MonoBehaviour
+namespace QuestJournal
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+	public class QuestJournal : MonoBehaviour
+	{
+		private Quest[] quests;
+		public CanvasGroup msg;
+		public TextMeshPro msgText;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+		private bool show;
+	}
 }
