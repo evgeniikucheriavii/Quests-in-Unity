@@ -17,11 +17,32 @@ public class PlayerController : MonoBehaviour
 
 	public Animator animator;
 
+	public Rigidbody rb;
 
+	private bool landed = false;
+	private bool jumped = false;
+	private float jumpSpeed = 250f;
+
+
+	public void OnCollisionEnter(Collision collision)
+	{
+		if(collision.transform.tag == "Ground")
+		{
+			Land();
+		}
+	}
+
+	public void OnCollisionExit(Collision collision) 
+	{
+		if(collision.transform.tag == "Ground")
+		{
+			Fly();
+		}
+	}
 
 	void Start()
 	{
-
+		rb = GetComponent<Rigidbody>();
 	}
 
 	void Update()
@@ -37,6 +58,7 @@ public class PlayerController : MonoBehaviour
 	private void Controll()
 	{
 		ControllKeyboard();
+		Jump();
 	}
 
 	private void ControllKeyboard()
@@ -92,5 +114,40 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 
+
+	private void Jump()
+	{
+		if(Input.GetKeyDown(KeyCode.Space))
+		{
+			if(landed)
+			{
+				landed = false;
+				jumped = true;
+
+				animator.SetBool("Landed", landed);
+				animator.SetBool("Jumped", jumped);
+
+				rb.AddForce(Vector3.up * jumpSpeed);
+			}
+		}
+	}
+
+	private void Fly()
+	{
+		landed = false;
+		jumped = false;
+
+		animator.SetBool("Landed", landed);
+		animator.SetBool("Jumped", jumped);
+	}
+
+	private void Land()
+	{
+		landed = true;
+		jumped = false;
+		
+		animator.SetBool("Landed", landed);
+		animator.SetBool("Jumped", jumped);
+	}
 
 }

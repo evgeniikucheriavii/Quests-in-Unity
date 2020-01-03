@@ -9,7 +9,7 @@ namespace QuestJournal
 	{
 		private Quest[] quests;
 		public CanvasGroup msg;
-		public TextMeshPro msgText;
+		//public TextMeshPro msgText;
 
 		private bool show;
 	}
