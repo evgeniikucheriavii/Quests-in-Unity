@@ -11,10 +11,11 @@ public class PlayerController : MonoBehaviour
 	private float sideSpeed = 35f;
 
 	public GameObject cam;
+	public GameObject camWrapper;
 
 	private float mouseSpeed = 100f;
 
-	private float mouseRotationSpeed = 50f;
+	private float mouseRotationSpeed = 20f;
 	private float maxCamX = 25f;
 	private float minCamX = 5f;
 	private float camX = 0f;
@@ -141,7 +142,14 @@ public class PlayerController : MonoBehaviour
 
 		if(xSide != 0)
 		{
-			transform.Rotate(new Vector3(0f, xSide * Time.fixedDeltaTime * mouseSpeed, 0f));
+			if(walking)
+			{
+				transform.Rotate(new Vector3(0f, xSide * Time.fixedDeltaTime * mouseSpeed, 0f));
+			}
+			else
+			{
+				camWrapper.transform.RotateAround(transform.position, Vector3.up, xSide * Time.fixedDeltaTime * mouseSpeed);
+			}
 		}
 
 		float ySide = 0;
