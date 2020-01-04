@@ -10,8 +10,14 @@ public class PlayerController : MonoBehaviour
 	private float speed = 2f;
 	private float sideSpeed = 35f;
 
-	private float mouseSpeed = 100f;
 	public GameObject cam;
+
+	private float mouseSpeed = 100f;
+
+	private float mouseRotationSpeed = 50f;
+	private float maxCamX = 25f;
+	private float minCamX = 5f;
+	private float camX = 0f;
 
 	public Animator animator;
 
@@ -43,6 +49,8 @@ public class PlayerController : MonoBehaviour
 		rb = GetComponent<Rigidbody>();
 		Cursor.lockState = CursorLockMode.Locked;
 		Cursor.visible = (false);
+
+		camX = cam.transform.rotation.x;
 	}
 
 	void Update()
@@ -69,7 +77,7 @@ public class PlayerController : MonoBehaviour
 
 		if(dForw != 0)
 		{
-			transform.Translate(Vector3.forward * speed * dForw * Time.deltaTime);
+			transform.Translate(Vector3.forward * speed * dForw * Time.fixedDeltaTime);
 
 			if(!walking)
 			{
@@ -111,7 +119,7 @@ public class PlayerController : MonoBehaviour
 
 		if(dSide != 0)
 		{
-			transform.Rotate(new Vector3(0f, dSide * Time.deltaTime * sideSpeed, 0f));
+			transform.Rotate(new Vector3(0f, dSide * Time.fixedDeltaTime * sideSpeed, 0f));
 		}
 	}
 
@@ -119,8 +127,6 @@ public class PlayerController : MonoBehaviour
 	{
 		float mouseX = Input.GetAxis("Mouse X");
 		float mouseY = Input.GetAxis("Mouse Y");
-
-		Debug.Log($"X: {mouseX} | Y: {mouseY}");
 
 		float xSide = 0;
 
@@ -135,8 +141,28 @@ public class PlayerController : MonoBehaviour
 
 		if(xSide != 0)
 		{
-			transform.Rotate(new Vector3(0f, xSide * Time.deltaTime * mouseSpeed, 0f));
+			transform.Rotate(new Vector3(0f, xSide * Time.fixedDeltaTime * mouseSpeed, 0f));
 		}
+
+		float ySide = 0;
+
+		if(mouseY > 0)
+		{
+			ySide = -1;
+		}
+		else if(mouseY < 0)
+		{
+			ySide = 1;
+		}
+
+		if(ySide != 0)
+		{
+			camX += ySide * Time.fixedDeltaTime * mouseRotationSpeed;
+			camX = Mathf.Clamp(camX, minCamX, maxCamX);
+
+			cam.transform.localRotation = Quaternion.AngleAxis(camX, Vector3.right);
+		}
+
 	}
 
 

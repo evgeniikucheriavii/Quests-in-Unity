@@ -937,6 +937,16 @@ PrefabInstance:
       propertyPath: m_Color.b
       value: 0.5754717
       objectReference: {fileID: 0}
+    - target: {fileID: 2206900998385471877, guid: 4a5cdd105178e438f8e31df6e7ad8962,
+        type: 3}
+      propertyPath: m_Name
+      value: Cursor
+      objectReference: {fileID: 0}
+    - target: {fileID: 6104253770134217380, guid: 4a5cdd105178e438f8e31df6e7ad8962,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6104253770783320074, guid: 4a5cdd105178e438f8e31df6e7ad8962,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -996,6 +1006,41 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6303303208576209594, guid: 4a5cdd105178e438f8e31df6e7ad8962,
+        type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6303303208576209594, guid: 4a5cdd105178e438f8e31df6e7ad8962,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6303303208576209594, guid: 4a5cdd105178e438f8e31df6e7ad8962,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6303303208576209594, guid: 4a5cdd105178e438f8e31df6e7ad8962,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6303303208576209594, guid: 4a5cdd105178e438f8e31df6e7ad8962,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6303303208576209594, guid: 4a5cdd105178e438f8e31df6e7ad8962,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7754864029273172952, guid: 4a5cdd105178e438f8e31df6e7ad8962,
+        type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4a5cdd105178e438f8e31df6e7ad8962, type: 3}
