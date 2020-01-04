@@ -10,9 +10,7 @@ public class PlayerController : MonoBehaviour
 	private float speed = 2f;
 	private float sideSpeed = 35f;
 
-	private float mouseSpeed = 10f;
-	private float mouseX = 0f;
-	private float mouseY = 0f;
+	private float mouseSpeed = 100f;
 	public GameObject cam;
 
 	public Animator animator;
@@ -43,6 +41,8 @@ public class PlayerController : MonoBehaviour
 	void Start()
 	{
 		rb = GetComponent<Rigidbody>();
+		Cursor.lockState = CursorLockMode.Locked;
+		Cursor.visible = (false);
 	}
 
 	void Update()
@@ -58,6 +58,7 @@ public class PlayerController : MonoBehaviour
 	private void Controll()
 	{
 		ControllKeyboard();
+		ControllMouse();
 		Jump();
 	}
 
@@ -111,6 +112,30 @@ public class PlayerController : MonoBehaviour
 		if(dSide != 0)
 		{
 			transform.Rotate(new Vector3(0f, dSide * Time.deltaTime * sideSpeed, 0f));
+		}
+	}
+
+	private void ControllMouse()
+	{
+		float mouseX = Input.GetAxis("Mouse X");
+		float mouseY = Input.GetAxis("Mouse Y");
+
+		Debug.Log($"X: {mouseX} | Y: {mouseY}");
+
+		float xSide = 0;
+
+		if(mouseX > 0)
+		{
+			xSide = 1;
+		}
+		else if(mouseX < 0)
+		{
+			xSide = -1;
+		}
+
+		if(xSide != 0)
+		{
+			transform.Rotate(new Vector3(0f, xSide * Time.deltaTime * mouseSpeed, 0f));
 		}
 	}
 
