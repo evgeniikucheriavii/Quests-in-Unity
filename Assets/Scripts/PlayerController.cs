@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
 
 	public GameObject cam;
 	public GameObject camWrapper;
+	public GameObject camHolder;
 
 	private float mouseSpeed = 100f;
 
@@ -26,6 +27,7 @@ public class PlayerController : MonoBehaviour
 
 	private bool landed = false;
 	private bool jumped = false;
+
 	private float jumpSpeed = 250f;
 
 
@@ -76,52 +78,56 @@ public class PlayerController : MonoBehaviour
 		float dSide = Input.GetAxis("Horizontal");
 		float dForw = Input.GetAxis("Vertical");
 
-		if(dForw != 0)
+		if(!animator.GetCurrentAnimatorStateInfo(0).IsName("JumpEnd"))
 		{
-			transform.Translate(Vector3.forward * speed * dForw * Time.fixedDeltaTime);
-
-			if(!walking)
+			if(dForw != 0)
 			{
-				walking = true;
-				animator.SetBool("Walking", walking);	
-			}
+				transform.Translate(Vector3.forward * speed * dForw * Time.fixedDeltaTime);
 
-			if(dForw < 0)
-			{
-				if(!walkingBack)
+				if(!walking)
 				{
-					walkingBack = true;
-					animator.SetBool("WalkingBack", walkingBack);
+					walking = true;
+					animator.SetBool("Walking", walking);	
+				}
+
+				if(dForw < 0)
+				{
+					if(!walkingBack)
+					{
+						walkingBack = true;
+						animator.SetBool("WalkingBack", walkingBack);
+					}
+				}
+				else
+				{
+					if(walkingBack)
+					{
+						walkingBack = false;
+						animator.SetBool("WalkingBack", walkingBack);	
+					}
 				}
 			}
 			else
 			{
+				if(walking)
+				{
+					walking = false;
+					animator.SetBool("Walking", walking);	
+				}
+
 				if(walkingBack)
 				{
 					walkingBack = false;
 					animator.SetBool("WalkingBack", walkingBack);	
 				}
 			}
-		}
-		else
-		{
-			if(walking)
-			{
-				walking = false;
-				animator.SetBool("Walking", walking);	
-			}
 
-			if(walkingBack)
+			if(dSide != 0)
 			{
-				walkingBack = false;
-				animator.SetBool("WalkingBack", walkingBack);	
+				transform.Rotate(new Vector3(0f, dSide * Time.fixedDeltaTime * sideSpeed, 0f));
 			}
 		}
-
-		if(dSide != 0)
-		{
-			transform.Rotate(new Vector3(0f, dSide * Time.fixedDeltaTime * sideSpeed, 0f));
-		}
+		
 	}
 
 	private void ControllMouse()
@@ -150,6 +156,12 @@ public class PlayerController : MonoBehaviour
 			{
 				camWrapper.transform.RotateAround(transform.position, Vector3.up, xSide * Time.fixedDeltaTime * mouseSpeed);
 			}
+		}
+
+		if(walking)
+		{
+			camWrapper.transform.rotation = camHolder.transform.rotation;
+			camWrapper.transform.position = camHolder.transform.position;
 		}
 
 		float ySide = 0;
@@ -204,7 +216,7 @@ public class PlayerController : MonoBehaviour
 	{
 		landed = true;
 		jumped = false;
-		
+
 		animator.SetBool("Landed", landed);
 		animator.SetBool("Jumped", jumped);
 	}
