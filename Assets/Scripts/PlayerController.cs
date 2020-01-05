@@ -40,6 +40,9 @@ public class PlayerController : MonoBehaviour
 
 	private GameObject aim;
 
+	private bool busy = false;
+	private bool inventoryOpened = false;
+
 
 	public void OnCollisionEnter(Collision collision)
 	{
@@ -77,14 +80,24 @@ public class PlayerController : MonoBehaviour
 
 	void FixedUpdate()
 	{
-		Controll();
+		ControllCharacter();
+		ControllGame();
 	}
 
-	private void Controll()
+	private void ControllCharacter()
 	{
-		ControllKeyboard();
-		ControllMouse();
-		Jump();
+		if(!busy)
+		{
+			ControllKeyboard();
+			ControllMouse();
+			Jump();
+		}
+		
+	}
+
+	private void ControllGame()
+	{
+		ControllInventory();
 	}
 
 	private void ControllKeyboard()
@@ -161,6 +174,25 @@ public class PlayerController : MonoBehaviour
 		{
 			useSound.Play();
 			
+		}
+	}
+
+	private void ControllInventory()
+	{
+		if(Input.GetKeyUp(KeyCode.I))
+		{
+			if(busy && inventoryOpened)
+			{
+				hud.HideInventory();
+				busy = false;
+				inventoryOpened = false;
+			}
+			else if(!busy && !inventoryOpened)
+			{
+				hud.ShowInventory();
+				busy = true;
+				inventoryOpened = true;
+			}
 		}
 	}
 
@@ -289,6 +321,19 @@ public class PlayerController : MonoBehaviour
 		{
 			return this.battle;
 		} 
+	}
+
+	public bool Busy
+	{
+		get 
+		{
+			return this.busy;
+		} 
+
+		set
+		{
+			this.busy = value;
+		}
 	}
 
 }
