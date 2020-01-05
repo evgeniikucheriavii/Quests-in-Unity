@@ -30,6 +30,10 @@ public class PlayerController : MonoBehaviour
 
 	private float jumpSpeed = 250f;
 
+	private AudioSource useSound;
+
+	private bool battle = false;
+
 
 	public void OnCollisionEnter(Collision collision)
 	{
@@ -54,6 +58,7 @@ public class PlayerController : MonoBehaviour
 		Cursor.visible = (false);
 
 		camX = cam.transform.rotation.x;
+		useSound = GetComponent<AudioSource>();
 	}
 
 	void Update()
@@ -74,6 +79,14 @@ public class PlayerController : MonoBehaviour
 	}
 
 	private void ControllKeyboard()
+	{
+		ControllMovement();
+		ControllInteractions();
+	}
+
+	#region Movement
+
+	private void ControllMovement()
 	{
 		float dSide = Input.GetAxis("Horizontal");
 		float dForw = Input.GetAxis("Vertical");
@@ -127,7 +140,16 @@ public class PlayerController : MonoBehaviour
 				transform.Rotate(new Vector3(0f, dSide * Time.fixedDeltaTime * sideSpeed, 0f));
 			}
 		}
-		
+	}
+
+	#endregion
+
+	private void ControllInteractions()
+	{
+		if(Input.GetKeyUp(KeyCode.E))
+		{
+			useSound.Play();
+		}
 	}
 
 	private void ControllMouse()
@@ -198,6 +220,14 @@ public class PlayerController : MonoBehaviour
 
 		animator.SetBool("Landed", landed);
 		animator.SetBool("Jumped", jumped);
+	}
+
+	public bool Battle 
+	{
+		get 
+		{
+			return this.battle;
+		} 
 	}
 
 }
