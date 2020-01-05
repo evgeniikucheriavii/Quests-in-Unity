@@ -53,7 +53,8 @@ public class PlayerController : MonoBehaviour
 	{
 		if(collision.transform.tag == "Ground")
 		{
-			Fly();
+			landed = false;
+			StartCoroutine("Fly");
 		}
 	}
 
@@ -259,13 +260,18 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 
-	private void Fly()
+	IEnumerator Fly()
 	{
-		landed = false;
-		jumped = false;
+		yield return new WaitForSeconds(0.2f);
 
-		animator.SetBool("Landed", landed);
-		animator.SetBool("Jumped", jumped);
+		if(!landed)
+		{
+			landed = false;
+			jumped = false;
+
+			animator.SetBool("Landed", landed);
+			animator.SetBool("Jumped", jumped);
+		}
 	}
 
 	private void Land()
