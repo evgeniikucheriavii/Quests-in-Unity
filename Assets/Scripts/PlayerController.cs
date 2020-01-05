@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
 	public GameObject cam;
 	public GameObject camWrapper;
 	public GameObject camHolder;
+	public Camera camera;
 
 	private float mouseSpeed = 100f;
 
@@ -33,6 +34,10 @@ public class PlayerController : MonoBehaviour
 	private AudioSource useSound;
 
 	private bool battle = false;
+
+	private HUDController hud;
+
+	private GameObject aim;
 
 
 	public void OnCollisionEnter(Collision collision)
@@ -59,6 +64,8 @@ public class PlayerController : MonoBehaviour
 
 		camX = cam.transform.rotation.x;
 		useSound = GetComponent<AudioSource>();
+
+		hud = GetComponent<HUDController>();
 	}
 
 	void Update()
@@ -155,6 +162,13 @@ public class PlayerController : MonoBehaviour
 
 	private void ControllMouse()
 	{
+		MouseMovement();
+		Aim();
+
+	}
+
+	private void MouseMovement()
+	{
 		float mouseX = Input.GetAxis("Mouse X");
 		float mouseY = Input.GetAxis("Mouse Y") * -1;
 
@@ -183,9 +197,42 @@ public class PlayerController : MonoBehaviour
 
 			cam.transform.localRotation = Quaternion.AngleAxis(camX, Vector3.right);
 		}
-
 	}
 
+	private void Aim()
+	{
+		Ray ray = camera.ViewportPointToRay(new Vector3(0.5F, 0.5F, 0));
+
+		RaycastHit hit;
+
+		if (Physics.Raycast(ray, out hit))
+		{
+
+			float dist = Vector3.Distance(hit.transform.position, transform.position);
+
+			if(dist < 1.5)
+			{
+				aim = hit.transform.gameObject;
+			}
+			else
+			{
+				aim = null;
+			}
+		}
+		else
+		{
+			aim = null;
+		}
+
+		if(aim != null)
+		{
+			hud.SetCursorText($"{aim.transform.name}");
+		}
+		else
+		{
+			hud.SetCursorText("");	
+		}
+	}
 
 	private void Jump()
 	{

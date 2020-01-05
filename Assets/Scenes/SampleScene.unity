@@ -1111,35 +1111,46 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 749285475}
     m_Modifications:
+    - target: {fileID: 595635513214401140, guid: 4a5cdd105178e438f8e31df6e7ad8962,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1191215968852320088, guid: 4a5cdd105178e438f8e31df6e7ad8962,
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1740884868528007999, guid: 4a5cdd105178e438f8e31df6e7ad8962,
+    - target: {fileID: 1448177203792850515, guid: 4a5cdd105178e438f8e31df6e7ad8962,
         type: 3}
-      propertyPath: m_Color.r
-      value: 0.5754717
-      objectReference: {fileID: 0}
-    - target: {fileID: 1740884868528007999, guid: 4a5cdd105178e438f8e31df6e7ad8962,
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee,
+        type: 2}
+    - target: {fileID: 1448177203792850515, guid: 4a5cdd105178e438f8e31df6e7ad8962,
         type: 3}
-      propertyPath: m_Color.g
-      value: 0.5754717
-      objectReference: {fileID: 0}
-    - target: {fileID: 1740884868528007999, guid: 4a5cdd105178e438f8e31df6e7ad8962,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 0.5754717
-      objectReference: {fileID: 0}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 2206900998385471877, guid: 4a5cdd105178e438f8e31df6e7ad8962,
         type: 3}
       propertyPath: m_Name
       value: Cursor
       objectReference: {fileID: 0}
-    - target: {fileID: 2947937673341180903, guid: 4a5cdd105178e438f8e31df6e7ad8962,
+    - target: {fileID: 3475101314931446210, guid: 4a5cdd105178e438f8e31df6e7ad8962,
         type: 3}
-      propertyPath: m_Volume
-      value: 0.4
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3475101314931446210, guid: 4a5cdd105178e438f8e31df6e7ad8962,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 5204479851489521665, guid: 4a5cdd105178e438f8e31df6e7ad8962,
+        type: 3}
+      propertyPath: m_Name
+      value: CursorText1
       objectReference: {fileID: 0}
     - target: {fileID: 6055193162978761038, guid: 4a5cdd105178e438f8e31df6e7ad8962,
         type: 3}
@@ -1216,39 +1227,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 6104253770783320079, guid: 4a5cdd105178e438f8e31df6e7ad8962,
-        type: 3}
-      propertyPath: m_Constraints
-      value: 112
-      objectReference: {fileID: 0}
     - target: {fileID: 6303303208576209594, guid: 4a5cdd105178e438f8e31df6e7ad8962,
         type: 3}
-      propertyPath: m_text
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6303303208576209594, guid: 4a5cdd105178e438f8e31df6e7ad8962,
-        type: 3}
-      propertyPath: m_textInfo.characterCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6303303208576209594, guid: 4a5cdd105178e438f8e31df6e7ad8962,
-        type: 3}
-      propertyPath: m_textInfo.spaceCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6303303208576209594, guid: 4a5cdd105178e438f8e31df6e7ad8962,
-        type: 3}
-      propertyPath: m_textInfo.wordCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6303303208576209594, guid: 4a5cdd105178e438f8e31df6e7ad8962,
-        type: 3}
-      propertyPath: m_textInfo.lineCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6303303208576209594, guid: 4a5cdd105178e438f8e31df6e7ad8962,
-        type: 3}
-      propertyPath: m_textInfo.pageCount
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7754864029273172952, guid: 4a5cdd105178e438f8e31df6e7ad8962,
@@ -1256,5 +1237,6 @@ PrefabInstance:
       propertyPath: m_AdditionalShaderChannelsFlag
       value: 25
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1448177203792850515, guid: 4a5cdd105178e438f8e31df6e7ad8962, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 4a5cdd105178e438f8e31df6e7ad8962, type: 3}
