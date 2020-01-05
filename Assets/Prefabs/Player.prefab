@@ -3754,6 +3754,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6584204787711622714}
   - component: {fileID: 8083648622395158904}
+  - component: {fileID: 3482746654204448782}
+  - component: {fileID: 2343610773670728835}
   m_Layer: 0
   m_Name: MusicPlayer
   m_TagString: Untagged
@@ -3785,7 +3787,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: e45a084a5c57cd69d8c489f023029c46, type: 3}
+  m_audioClip: {fileID: 8300000, guid: c6cf6edb8f337ff7fb62ed5fab013b5d, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.179
   m_Pitch: 1
@@ -3871,6 +3873,36 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!136 &3482746654204448782
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6951146687062388746}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2343610773670728835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6951146687062388746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0b268001c59a42f6bc4e6d60dd8470a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pieceTheme: {fileID: 8300000, guid: c6cf6edb8f337ff7fb62ed5fab013b5d, type: 3}
+  battleTheme: {fileID: 8300000, guid: 1748c0f81b22b7be5aed82fdbdf844f4, type: 3}
+  houseTheme: {fileID: 8300000, guid: e45a084a5c57cd69d8c489f023029c46, type: 3}
+  pc: {fileID: 6104253770783320076}
 --- !u!1 &7552711024433519492
 GameObject:
   m_ObjectHideFlags: 0

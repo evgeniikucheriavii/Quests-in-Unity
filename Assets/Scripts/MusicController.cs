@@ -27,8 +27,10 @@ public class MusicController : MonoBehaviour
 			if(!pc.Battle)
 			{
 				audio.clip = houseTheme;
-				inHouse = true;
+				audio.Play();
 			}
+			
+			inHouse = true;
 		}
 	}
 
@@ -39,9 +41,10 @@ public class MusicController : MonoBehaviour
 			if(!pc.Battle)
 			{
 				audio.clip = pieceTheme;
-				inHouse = false;
+				audio.Play();	
 			}
-			
+
+			inHouse = false;
 		}
 	}
 
@@ -52,6 +55,7 @@ public class MusicController : MonoBehaviour
 			if(pc.Battle)
 			{
 				audio.clip = battleTheme;
+				audio.Play();
 				battle = true;
 			}
 		}
@@ -62,11 +66,14 @@ public class MusicController : MonoBehaviour
 				if(inHouse)
 				{
 					audio.clip = houseTheme;
+					audio.Play();
 				}
 				else
 				{
 					audio.clip = pieceTheme;
+					audio.Play();
 				}
+				battle = false;
 			}
 		}
 	}
