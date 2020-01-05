@@ -186,12 +186,18 @@ public class PlayerController : MonoBehaviour
 				hud.HideInventory();
 				busy = false;
 				inventoryOpened = false;
+
+				Cursor.lockState = CursorLockMode.Locked;
+				Cursor.visible = (false);
 			}
 			else if(!busy && !inventoryOpened)
 			{
 				hud.ShowInventory();
 				busy = true;
 				inventoryOpened = true;
+
+				Cursor.lockState = CursorLockMode.None;
+				Cursor.visible = (true);
 			}
 		}
 	}
