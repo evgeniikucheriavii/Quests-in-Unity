@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
 
 	private float mouseSpeed = 100f;
 
-	private float mouseRotationSpeed = 20f;
+	private float mouseRotationSpeed = 10f;
 	private float maxCamX = 25f;
 	private float minCamX = 5f;
 	private float camX = 0f;
@@ -133,28 +133,17 @@ public class PlayerController : MonoBehaviour
 	private void ControllMouse()
 	{
 		float mouseX = Input.GetAxis("Mouse X");
-		float mouseY = Input.GetAxis("Mouse Y");
+		float mouseY = Input.GetAxis("Mouse Y") * -1;
 
-		float xSide = 0;
-
-		if(mouseX > 0)
-		{
-			xSide = 1;
-		}
-		else if(mouseX < 0)
-		{
-			xSide = -1;
-		}
-
-		if(xSide != 0)
+		if(mouseX != 0)
 		{
 			if(walking)
 			{
-				transform.Rotate(new Vector3(0f, xSide * Time.fixedDeltaTime * mouseSpeed, 0f));
+				transform.Rotate(new Vector3(0f, mouseX * Time.fixedDeltaTime * mouseSpeed, 0f));
 			}
 			else
 			{
-				camWrapper.transform.RotateAround(transform.position, Vector3.up, xSide * Time.fixedDeltaTime * mouseSpeed);
+				camWrapper.transform.RotateAround(transform.position, Vector3.up, mouseX * Time.fixedDeltaTime * mouseSpeed);
 			}
 		}
 
@@ -164,20 +153,9 @@ public class PlayerController : MonoBehaviour
 			camWrapper.transform.position = camHolder.transform.position;
 		}
 
-		float ySide = 0;
-
-		if(mouseY > 0)
+		if(mouseY != 0)
 		{
-			ySide = -1;
-		}
-		else if(mouseY < 0)
-		{
-			ySide = 1;
-		}
-
-		if(ySide != 0)
-		{
-			camX += ySide * Time.fixedDeltaTime * mouseRotationSpeed;
+			camX += mouseY * Time.fixedDeltaTime * mouseRotationSpeed;
 			camX = Mathf.Clamp(camX, minCamX, maxCamX);
 
 			cam.transform.localRotation = Quaternion.AngleAxis(camX, Vector3.right);
