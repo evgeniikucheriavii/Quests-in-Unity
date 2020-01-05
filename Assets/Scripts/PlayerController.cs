@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
 	private bool walking = false;
 	private bool walkingBack = false;
+	private bool startedWalking = false;
 
 	private float speed = 2f;
 	private float sideSpeed = 35f;
@@ -140,6 +141,8 @@ public class PlayerController : MonoBehaviour
 					walkingBack = false;
 					animator.SetBool("WalkingBack", walkingBack);	
 				}
+
+				startedWalking = false;
 			}
 
 			if(dSide != 0)
@@ -156,7 +159,7 @@ public class PlayerController : MonoBehaviour
 		if(Input.GetKeyUp(KeyCode.E))
 		{
 			useSound.Play();
-			
+			battle = !battle;
 		}
 	}
 
@@ -184,10 +187,15 @@ public class PlayerController : MonoBehaviour
 			}
 		}
 
-		if(walking)
+		if(walking && !startedWalking)
 		{
+			startedWalking = true;
+			transform.rotation = Quaternion.LookRotation(camWrapper.transform.forward, camWrapper.transform.up);
+
 			camWrapper.transform.rotation = camHolder.transform.rotation;
 			camWrapper.transform.position = camHolder.transform.position;
+
+
 		}
 
 		if(mouseY != 0)
