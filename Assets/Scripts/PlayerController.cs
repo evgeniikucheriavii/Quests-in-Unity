@@ -149,7 +149,7 @@ public class PlayerController : MonoBehaviour
 		if(Input.GetKeyUp(KeyCode.E))
 		{
 			useSound.Play();
-			battle = !battle;
+			
 		}
 	}
 
@@ -181,7 +181,6 @@ public class PlayerController : MonoBehaviour
 			camX += mouseY * Time.fixedDeltaTime * mouseRotationSpeed;
 			camX = Mathf.Clamp(camX, minCamX, maxCamX);
 
-			//cam.transform.RotateAround(transform.position, Vector3.right, camX);
 			cam.transform.localRotation = Quaternion.AngleAxis(camX, Vector3.right);
 		}
 
