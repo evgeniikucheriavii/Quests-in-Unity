@@ -159,7 +159,7 @@ public class PlayerController : MonoBehaviour
 		if(Input.GetKeyUp(KeyCode.E))
 		{
 			useSound.Play();
-			battle = !battle;
+			
 		}
 	}
 
