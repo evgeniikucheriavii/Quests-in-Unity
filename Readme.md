@@ -23,5 +23,5 @@ This project is created for educational purposes only.
 
 ### Others
 
-Skybox by Clod: https://assetstore.unity.com/packages/2d/textures-materials/sky/skybox-4183
+1. Skybox by Clod: https://assetstore.unity.com/packages/2d/textures-materials/sky/skybox-4183
 
